@@ -1,25 +1,20 @@
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
+
 public class RandomWord {
     public static void main(String[] args) {
-        String res ="";
-        String tmp = "";
-        double p =1;
+        int index = 0;
+        String champion = "";
+
         while (!StdIn.isEmpty()) {
-            String value = StdIn.readString();
-
-            if (StdRandom.bernoulli((double) 1 / p)){
-                res = value;
+            String word = StdIn.readString();
+            boolean accept = StdRandom.bernoulli(1 / (index + 1.0));
+            if (accept) {
+                champion = word;
             }
-            p++;
-            if (!res.isEmpty()){
-                StdOut.println(res);
-                break;
-            }
-
-
+            index++;
         }
-        //StdOut.println(res);
+        StdOut.println(champion);
     }
 }
